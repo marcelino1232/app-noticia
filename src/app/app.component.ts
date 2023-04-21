@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NoticiaService } from './services/noticia.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app-noticia';
+  
+
+  listNoticias:any[] = [];
+  loading = false;
+
+  constructor(private _noticiaService:NoticiaService){
+    
+  }
+  
+  buscarNoticias(noticia:any){
+    this.loading = true;
+
+    setTimeout(() => {
+      this._noticiaService.getNoticias(noticia).subscribe(data => {
+        this.loading = false;
+        this.listNoticias = data.articles;
+      });
+    },2000);
+  }
+  
 }

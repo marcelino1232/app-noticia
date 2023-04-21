@@ -1,0 +1,13 @@
+<div class="card-deck row row-cols-1 row-cols-md-2 g-4 mt-3 mb-5">
+  <div *ngFor="let noticia of listadoNoticias" class="col">
+    <div class="card">
+      <img *ngIf="noticia.urlToImage != null" class="card-img-top" [src]="noticia.urlToImage" alt="Card image cap">
+      <img *ngIf="noticia.urlToImage == null" class="card-img-top" src="../../../assets/img/nofound.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{noticia.title}}</h5>
+        <p class="card-text">{{noticia.description}}</p>
+        <a target="_blank" [href]="noticia.url" style="width: 100%;" class="btn btn-primary btn-lg btn-block">Ver Noticia</a>
+      </div>
+    </div>
+   </div> 
+</div>
